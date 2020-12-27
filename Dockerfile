@@ -5,4 +5,4 @@ RUN apk add --no-cache \
         rpcbind \
         && rm -rf /var/cache/apk/*
 
-COPY root /
+COPY root/ /
