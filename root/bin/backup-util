@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+# CHECK IF BACKUP_PATH EXISTS
+if [ ! -d "$BACKUP_PATH" ]; then
+  mkdir -p $BACKUP_PATH
+fi
+
+# GOTO THE SOURCE
+cd $SOURCE_PATH
+SOURCE_DIR=$(basename $PWD)
+sleep 1s
+
+# GO UP 1 DIR
+cd ..
+
+# START BACKUP
+echo "STARTING BACKUP..."
+tar -zvcf $BACKUP_PATH/$APP_ID/"$(date '+%Y-%m-%d.%H%M').tar.gz" $SOURCE_DIR
+
+# CLEANUP OLD BACKUPS
+sleep 1s
+find $BACKUP_PATH/$APP_ID -mtime +3 -type f -delete
+
+# EXIT SCRIPT
+exit 0
