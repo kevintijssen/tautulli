@@ -18,7 +18,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          image: ghcr.io/kevintijssen/tautulli
+          images: ghcr.io/kevintijssen/tautulli
           tag-sha: true
           tag-edge: false
           tag-latest: true
